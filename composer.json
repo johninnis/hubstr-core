@@ -1,0 +1,76 @@
+{
+    "name": "innis/hubstr-core",
+    "description": "Shared runtime kernel for Hubstr services: application lifecycle, configuration, logging, SQLite persistence, templating, and the shared amphp HTTP host kit",
+    "type": "library",
+    "keywords": [
+        "hubstr",
+        "nostr",
+        "amphp",
+        "kernel",
+        "http-server",
+        "sqlite",
+        "migrations"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "John Innis",
+            "email": "john@innis.xyz",
+            "homepage": "https://www.innis.xyz/"
+        }
+    ],
+    "require": {
+        "php": "^8.4",
+        "ext-pcntl": "*",
+        "ext-pdo_sqlite": "*",
+        "ext-zlib": "*",
+        "composer-runtime-api": "^2.2",
+        "amphp/amp": "^3",
+        "amphp/byte-stream": "^2",
+        "amphp/http": "^2",
+        "amphp/http-server": "^3",
+        "amphp/http-server-router": "^2",
+        "amphp/http-server-static-content": "^2",
+        "amphp/log": "^2",
+        "amphp/socket": "^2",
+        "latte/latte": "^3.1",
+        "monolog/monolog": "^3.10",
+        "psr/log": "^3.0"
+    },
+    "require-dev": {
+        "ext-posix": "*",
+        "friendsofphp/php-cs-fixer": "^3.95",
+        "innis/coding-standards": "^0.1",
+        "league/uri": "^7.1",
+        "phpstan/phpstan": "~2.2.6",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "phpunit/phpunit": "^13.1",
+        "rector/rector": "~2.5.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Innis\\Hubstr\\Core\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Innis\\Hubstr\\Core\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": [
+            "phpunit",
+            "@analyse"
+        ],
+        "test-unit": "phpunit --testsuite=Unit",
+        "test-coverage": "XDEBUG_MODE=coverage phpunit --coverage-html var/tests/coverage/html --coverage-text --coverage-clover var/tests/coverage/clover.xml",
+        "analyse": "phpstan analyse",
+        "fix-style": "php-cs-fixer fix",
+        "check-style": "php-cs-fixer fix --dry-run --diff",
+        "rector": "rector process",
+        "check-rector": "rector process --dry-run"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
