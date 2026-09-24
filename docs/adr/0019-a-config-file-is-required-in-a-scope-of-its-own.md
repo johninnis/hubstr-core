@@ -1,4 +1,4 @@
-# 0019. A config file is required in a scope of its own
+# 19. A config file is required in a scope of its own
 
 ## Status
 

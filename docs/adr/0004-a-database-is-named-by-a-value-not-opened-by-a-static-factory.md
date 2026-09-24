@@ -1,4 +1,4 @@
-# 0004. A database is named by a value, not opened by a static factory
+# 4. A database is named by a value, not opened by a static factory
 
 ## Status
 

@@ -1,4 +1,4 @@
-# 0010. A schema evolves through numbered migrations tracked in user_version
+# 10. A schema evolves through numbered migrations tracked in user_version
 
 ## Status
 

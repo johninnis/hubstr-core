@@ -1,4 +1,4 @@
-# 0014. An error message reaches the client only through the template
+# 14. An error message reaches the client only through the template
 
 ## Status
 

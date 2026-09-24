@@ -1,4 +1,4 @@
-# 0016. The HTTP server is assembled in two steps
+# 16. The HTTP server is assembled in two steps
 
 ## Status
 

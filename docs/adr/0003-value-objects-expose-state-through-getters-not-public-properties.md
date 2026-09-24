@@ -1,4 +1,4 @@
-# 0003. Value objects expose state through getters, not public properties
+# 3. Value objects expose state through getters, not public properties
 
 ## Status
 

@@ -1,4 +1,4 @@
-# 0002. Templates escape by default, with context-aware escaping
+# 2. Templates escape by default, with context-aware escaping
 
 ## Status
 

@@ -1,4 +1,4 @@
-# 0018. An unknown config key is an error, and the known keys are listed
+# 18. An unknown config key is an error, and the known keys are listed
 
 ## Status
 

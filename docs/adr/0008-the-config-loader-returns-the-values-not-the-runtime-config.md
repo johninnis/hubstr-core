@@ -1,4 +1,4 @@
-# 0008. The config loader returns the values, not the runtime config
+# 8. The config loader returns the values, not the runtime config
 
 ## Status
 

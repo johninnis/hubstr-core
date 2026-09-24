@@ -1,4 +1,4 @@
-# 0017. Config reads are strict, and a bad value stops the service
+# 17. Config reads are strict, and a bad value stops the service
 
 ## Status
 

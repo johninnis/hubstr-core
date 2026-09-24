@@ -1,4 +1,4 @@
-# 0006. An event stream is never compressed
+# 6. An event stream is never compressed
 
 ## Status
 

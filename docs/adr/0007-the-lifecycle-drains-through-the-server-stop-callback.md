@@ -1,4 +1,4 @@
-# 0007. The lifecycle drains through the server's stop callback
+# 7. The lifecycle drains through the server's stop callback
 
 ## Status
 

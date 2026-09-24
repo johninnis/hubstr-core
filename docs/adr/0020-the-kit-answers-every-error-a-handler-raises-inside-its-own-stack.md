@@ -1,4 +1,4 @@
-# 0020. The kit answers every error a handler raises inside its own stack
+# 20. The kit answers every error a handler raises inside its own stack
 
 ## Status
 

@@ -1,4 +1,4 @@
-# 0013. The host kit sends two baseline security headers, and no more
+# 13. The host kit sends two baseline security headers, and no more
 
 ## Status
 

@@ -1,4 +1,4 @@
-# 0011. A service logs to standard output only, without blocking
+# 11. A service logs to standard output only, without blocking
 
 ## Status
 

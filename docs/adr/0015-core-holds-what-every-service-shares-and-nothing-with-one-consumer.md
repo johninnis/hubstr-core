@@ -1,4 +1,4 @@
-# 0015. Core holds what every service shares, and nothing with one consumer
+# 15. Core holds what every service shares, and nothing with one consumer
 
 ## Status
 

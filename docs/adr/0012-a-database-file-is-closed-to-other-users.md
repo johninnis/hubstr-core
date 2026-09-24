@@ -1,4 +1,4 @@
-# 0012. A database file is closed to other users
+# 12. A database file is closed to other users
 
 ## Status
 

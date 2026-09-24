@@ -1,4 +1,4 @@
-# 0001. Root faults at an independent base exception
+# 1. Root faults at an independent base exception
 
 ## Status
 
