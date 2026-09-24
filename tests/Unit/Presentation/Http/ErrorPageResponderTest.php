@@ -6,6 +6,7 @@ namespace Innis\Hubstr\Core\Tests\Unit\Presentation\Http;
 
 use Amp\Http\HttpStatus;
 use Innis\Hubstr\Core\Domain\ValueObject\SiteInfo;
+use Innis\Hubstr\Core\Infrastructure\Http\StaticSiteInfoProvider;
 use Innis\Hubstr\Core\Presentation\Http\ErrorPageResponder;
 use Innis\Hubstr\Core\Tests\Fake\FakeTemplateRenderer;
 use PHPUnit\Framework\TestCase;
@@ -51,6 +52,6 @@ final class ErrorPageResponderTest extends TestCase
 
     private function responder(FakeTemplateRenderer $renderer): ErrorPageResponder
     {
-        return new ErrorPageResponder('error.latte', $renderer, new SiteInfo('Hubstr Service', '1.2.3'));
+        return new ErrorPageResponder('error.latte', $renderer, new StaticSiteInfoProvider(new SiteInfo('Hubstr Service', '1.2.3')));
     }
 }

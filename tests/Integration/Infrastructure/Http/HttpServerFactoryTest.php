@@ -22,6 +22,7 @@ use Innis\Hubstr\Core\Infrastructure\Http\HttpServerFactory;
 use Innis\Hubstr\Core\Infrastructure\Http\HttpServerOptions;
 use Innis\Hubstr\Core\Infrastructure\Http\Route;
 use Innis\Hubstr\Core\Infrastructure\Http\RouterDefinition;
+use Innis\Hubstr\Core\Infrastructure\Http\StaticSiteInfoProvider;
 use Innis\Hubstr\Core\Presentation\Http\ErrorPageResponder;
 use Innis\Hubstr\Core\Presentation\Http\TemplatedErrorHandler;
 use Innis\Hubstr\Core\Tests\Fake\FakeTemplateRenderer;
@@ -269,7 +270,7 @@ final class HttpServerFactoryTest extends TestCase
         $this->port = self::freePort();
 
         $errorHandler = new TemplatedErrorHandler(
-            new ErrorPageResponder('error.latte', new FakeTemplateRenderer(), new SiteInfo('Hubstr Service', '1.2.3')),
+            new ErrorPageResponder('error.latte', new FakeTemplateRenderer(), new StaticSiteInfoProvider(new SiteInfo('Hubstr Service', '1.2.3'))),
         );
 
         $definition = new RouterDefinition(

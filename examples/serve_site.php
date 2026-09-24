@@ -14,6 +14,7 @@ use Innis\Hubstr\Core\Infrastructure\Http\HttpServerFactory;
 use Innis\Hubstr\Core\Infrastructure\Http\HttpServerOptions;
 use Innis\Hubstr\Core\Infrastructure\Http\Route;
 use Innis\Hubstr\Core\Infrastructure\Http\RouterDefinition;
+use Innis\Hubstr\Core\Infrastructure\Http\StaticSiteInfoProvider;
 use Innis\Hubstr\Core\Infrastructure\Logging\LoggerFactory;
 use Innis\Hubstr\Core\Infrastructure\Persistence\SchemaMigrator;
 use Innis\Hubstr\Core\Infrastructure\Persistence\SqliteDatabase;
@@ -40,7 +41,7 @@ new SchemaMigrator($database)->migrate(__DIR__.'/resources/migrations');
 $database->exec("INSERT INTO starts (started_at) VALUES (strftime('%s', 'now'))");
 
 $renderer = LatteTemplateRenderer::create(__DIR__.'/templates', $values->string('template_cache_path'));
-$site = new SiteInfo($values->string('site_name'), new ComposerVersionProvider()->getVersion(), $values->optionalString('owner_npub'));
+$site = new StaticSiteInfoProvider(new SiteInfo($values->string('site_name'), new ComposerVersionProvider()->getVersion(), $values->optionalString('owner_npub')));
 
 $landingPage = new LandingPageResponder('index.latte', $renderer, $site);
 $errorHandler = new TemplatedErrorHandler(new ErrorPageResponder('error.latte', $renderer, $site));

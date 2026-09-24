@@ -53,7 +53,7 @@ new SchemaMigrator($database)->migrate(__DIR__.'/resources/migrations');
 $database->exec("INSERT INTO starts (started_at) VALUES (strftime('%s', 'now'))");
 
 $renderer = LatteTemplateRenderer::create(__DIR__.'/templates', $values->string('template_cache_path'));
-$site = new SiteInfo($values->string('site_name'), new ComposerVersionProvider()->getVersion(), $values->optionalString('owner_npub'));
+$site = new StaticSiteInfoProvider(new SiteInfo($values->string('site_name'), new ComposerVersionProvider()->getVersion(), $values->optionalString('owner_npub')));
 
 $landingPage = new LandingPageResponder('index.latte', $renderer, $site);
 $errorHandler = new TemplatedErrorHandler(new ErrorPageResponder('error.latte', $renderer, $site));
@@ -154,7 +154,7 @@ Every response passes through the kit's middleware, which:
 - answers a client error a handler lets escape — a body over the size limit, above all — with the right status through the service's error handler, where amphp alone would leave the client waiting (see [ADR-0009](docs/adr/0009-the-host-kit-answers-a-client-error-a-handler-lets-escape.md));
 - answers an unhandled exception with the service's 500 page, logging the exception and sending none of its text to the client, and refuses a request method it does not route, both inside its own stack so that the headers above and a service's middleware apply to every error page (see [ADR-0020](docs/adr/0020-the-kit-answers-every-error-a-handler-raises-inside-its-own-stack.md)).
 
-`ErrorPageResponder` (through `TemplatedErrorHandler`) and `LandingPageResponder` render pages from a `SiteInfo`: the site's name, version and owner. An error message reaches the client only through the template, never the status line (see [ADR-0014](docs/adr/0014-an-error-message-reaches-the-client-only-through-the-template.md)).
+`ErrorPageResponder` (through `TemplatedErrorHandler`) and `LandingPageResponder` render pages from a `SiteInfo`: the site's name, version and owner. They read it through a `SiteInfoProviderInterface` on every render, so a service whose name can change at runtime shows the current one; a service with a fixed identity wraps its value in `StaticSiteInfoProvider` (see [ADR-0021](docs/adr/0021-the-page-responders-read-the-site-identity-through-a-provider.md)). An error message reaches the client only through the template, never the status line (see [ADR-0014](docs/adr/0014-an-error-message-reaches-the-client-only-through-the-template.md)).
 
 The kit leaves to each service what differs between them: its routes, cross-origin handling, framing and content security policy, and the content of its pages. Extra middleware goes in through `HttpServerOptions`.
 
@@ -208,7 +208,7 @@ php examples/serve_site.php        # the Quick Start above, on http://127.0.0.1:
 Clean architecture, with dependencies pointing inward.
 
 - **Domain** — the value objects (`ConfigValues`, `ServiceRuntimeConfig`, `HttpBinding`, `SiteInfo`, `PackageVersion`), the `LogLevel` and `HttpMethod` enums, and the fault hierarchy.
-- **Application** — the ports a host or the infrastructure implements (`ServerInterface`, `LifecycleInterface`, `ShutdownSignalInterface`, `TemplateRendererInterface`, `VersionProviderInterface`) and the `Kernel` that orchestrates them.
+- **Application** — the ports a host or the infrastructure implements (`ServerInterface`, `LifecycleInterface`, `ShutdownSignalInterface`, `TemplateRendererInterface`, `VersionProviderInterface`, `SiteInfoProviderInterface`) and the `Kernel` that orchestrates them.
 - **Infrastructure** — by concern: `Config/`, `Filesystem/`, `Http/` (the server assembly), `Logging/`, `Persistence/`, `Process/`, `Templating/`, `Version/`.
 - **Presentation** — `Http/`: the error and landing page rendering.
 
