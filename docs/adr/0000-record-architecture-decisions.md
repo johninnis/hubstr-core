@@ -20,6 +20,8 @@ We record architecture decisions as Architecture Decision Records (ADRs) kept in
 
 This record is the first in the series and establishes the practice itself. Substantive decisions begin at `0001`.
 
+A record's filename is its four-digit number and a kebab-case slug of its title, at most 95 characters including the `.md` extension, the longest path component JSR accepts. A longer title is shortened in the filename, never in the record's heading.
+
 ## Consequences
 
 The rationale behind non-obvious choices is captured next to the code and survives staff changes. Reviewers can point to a record rather than repeat an argument. Before the first release the set always reads as one current account, with no amendments to reassemble; after it, reversing a decision becomes a deliberate, documented act. The cost is the small ongoing discipline of writing a record whenever a non-self-evident decision is made.

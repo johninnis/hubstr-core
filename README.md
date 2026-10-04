@@ -160,7 +160,7 @@ The kit leaves to each service what differs between them: its routes, cross-orig
 
 ## Lifecycle and shutdown
 
-`Kernel::run()` starts the server, starts the optional `LifecycleInterface`, logs a banner and waits for `SIGINT` or `SIGTERM`. It then stops the server — which drains in-flight work through the lifecycle's `drain()` as it stops — and calls the lifecycle's `stop()` (see [ADR-0007](docs/adr/0007-the-lifecycle-drains-through-the-server-stop-callback.md)).
+`Kernel::run()` starts the server, starts the optional `LifecycleInterface`, logs a banner and waits for `SIGINT` or `SIGTERM`. It then stops the server — which drains in-flight work through the lifecycle's `drain()` as it stops — and calls the lifecycle's `stop()` (see [ADR-0007](docs/adr/0007-the-lifecycle-drains-through-the-servers-stop-callback.md)).
 
 ```php
 new Kernel($logger, new AmphpShutdownSignal(), $lifecycle)->run($server, 'Relay started', ['port' => 8080]);

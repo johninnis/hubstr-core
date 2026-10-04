@@ -40,7 +40,7 @@
     "require-dev": {
         "ext-posix": "*",
         "friendsofphp/php-cs-fixer": "^3.95",
-        "innis/coding-standards": "^0.1",
+        "innis/coding-standards": "^0.2",
         "league/uri": "^7.1",
         "phpstan/phpstan": "~2.2.6",
         "phpstan/phpstan-phpunit": "^2.0",
