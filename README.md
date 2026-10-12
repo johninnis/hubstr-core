@@ -222,6 +222,7 @@ Design rationale lives in [`docs/adr/`](docs/adr/) as sequentially-numbered Arch
 composer test          # PHPUnit (Unit and Integration) and PHPStan at level 9
 composer check-style   # php-cs-fixer, dry run
 composer check-rector  # Rector's PHP 8.4 modernisation check
+composer check-path-lengths  # no tracked path component over 95 characters
 ```
 
 ## Licence
