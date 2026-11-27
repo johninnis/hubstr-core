@@ -40,12 +40,12 @@
     "require-dev": {
         "ext-posix": "*",
         "friendsofphp/php-cs-fixer": "^3.95",
-        "innis/coding-standards": "^0.2",
+        "innis/coding-standards": "^0.2.5",
         "league/uri": "^7.1",
         "phpstan/phpstan": "~2.3.4",
         "phpstan/phpstan-phpunit": "^2.0",
         "phpunit/phpunit": "^13.1",
-        "rector/rector": "~2.8.3"
+        "rector/rector": "~2.9.2"
     },
     "autoload": {
         "psr-4": {
